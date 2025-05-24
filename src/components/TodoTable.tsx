@@ -10,7 +10,7 @@ export default function TodoTable({ type }: TodoTableProps) {
   const { selectedList, unSelectTodo } = useTodo()
 
   return (
-    <div className="border-2 border-gray-300 rounded-md flex flex-col h-full">
+    <div className="border-2 border-gray-300 rounded-md flex flex-col">
       <div className="bg-gray-200 p-2 rounded-t-md">
         <h2 className="text-xl font-bold text-center">{type}</h2>
       </div>
