@@ -68,16 +68,20 @@ export function TodoProvider({ children }: { children: React.ReactNode }) {
     }
 
     const timer = setTimeout(() => {
+      setSelectedList((currentSelectedList) => {
+        const todoType = todo.type
+        const currentTodo = currentSelectedList[todoType]?.find(
+          (item) => item.name === todo.name
+        )
+
+        if (currentTodo) {
+          returnToTodoList(currentTodo)
+        }
+
+        return currentSelectedList
+      })
+
       returnTimersRef.current.delete(todo.name)
-
-      const todoType = todo.type
-      const currentTodo = selectedList[todoType]?.find(
-        (item) => item.name === todo.name
-      )
-
-      if (currentTodo) {
-        returnToTodoList(currentTodo)
-      }
     }, 5000)
 
     returnTimersRef.current.set(todo.name, timer)
